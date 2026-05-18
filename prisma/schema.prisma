@@ -13,6 +13,14 @@ datasource db {
   url      = "file:dev.sqlite"
 }
 
+model ImageJob {
+  id        String   @id @default(cuid())
+  status    String   @default("pending") // pending | processing | done | error
+  imageUrl  String?
+  error     String?
+  createdAt DateTime @default(now())
+}
+
 model Session {
   id                  String    @id
   shop                String
